@@ -3043,6 +3043,7 @@ hr {
 /* line 5, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_headerMenu.scss */
 .header-area .main-header {
   padding: 0 85px;
+  height: 100px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -3100,6 +3101,7 @@ hr {
   /* line 5, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_headerMenu.scss */
   .header-area .main-header {
     padding-top: 16px;
+    height: 85px !important;
     padding-bottom: 21px;
   }
 }
