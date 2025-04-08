@@ -8,7 +8,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background: #f6f6f6;
+        }
+    
+        .gallery-area {
+          padding: 50px 20px;
+        }
+    
+        .grid {
+          margin-left: -15px;
+        }
+    
+        .grid-item {
+          width: 32%;
+          margin-bottom: 30px;
+          padding-left: 15px;
+          float: left;
+          position: relative;
+          overflow: hidden;
+        }
+    
+        .grid-item img {
+          width: 100%;
+          height: auto;
+          display: block;
+          border-radius: 12px;
+        }
+    
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.4);
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+    
+        .grid-item:hover .overlay {
+          opacity: 1;
+        }
+    
+        .overlay h3 {
+          color: #fff;
+          font-size: 24px;
+          margin: 0 0 10px;
+        }
+    
+        .overlay a {
+          color: #fff;
+          font-size: 20px;
+          background: red;
+          padding: 10px 15px;
+          border-radius: 50%;
+          text-decoration: none;
+        }
+    
+        @media (max-width: 991px) {
+          .grid-item {
+            width: 48%;
+          }
+        }
+    
+        @media (max-width: 575px) {
+          .grid-item {
+            width: 100%;
+          }
+        }
+      </style>
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -23,6 +99,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body class="black-bg">
     <!-- ? Preloader Start -->
@@ -99,77 +176,75 @@
     <!-- Hero End -->
     <!--? Gallery Area Start -->
     <div class="gallery-area">
-        <div class="container-fluid ">
-            <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/s14.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/s10.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/b5.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/s8.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/s9.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div class="box snake mb-30">
-                        <div class="gallery-img big-img" style="background-image: url(assets/img/gallery/s11.jpg);"></div>
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <h3>Muscle gaining </h3>
-                                <a href="gallery.html"><i class="ti-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container-fluid">
+          <div class="grid">
+    
+            <!-- Repeat for as many images as needed -->
+            <div class="grid-item">
+              <img src="assets/img/gallery/s11.jpg" alt="Muscle Gaining">
+              <div class="overlay">
+                <h3>Muscle Gaining</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
             </div>
+    
+            <div class="grid-item">
+              <img src="assets/img/gallery/s10.jpg" alt="Fat Loss">
+              <div class="overlay">
+                <h3>Fat Loss</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
+            </div>
+    
+            <div class="grid-item">
+              <img src="assets/img/gallery/s7.jpg" alt="Cardio Training">
+              <div class="overlay">
+                <h3>Cardio</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
+            </div>
+    
+            <div class="grid-item">
+              <img src="assets/img/gallery/s4.jpg" alt="Yoga">
+              <div class="overlay">
+                <h3>Yoga</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
+            </div>
+    
+            <div class="grid-item">
+              <img src="assets/img/gallery/s14.jpg" alt="Strength">
+              <div class="overlay">
+                <h3>Strength</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
+            </div>
+    
+            <div class="grid-item">
+              <img src="assets/img/gallery/s12.jpg" alt="Flexibility">
+              <div class="overlay">
+                <h3>Flexibility</h3>
+                <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+              </div>
+            </div>
+            <div class="grid-item">
+                <img src="assets/img/gallery/editimg.jpg" alt="Strength">
+                <div class="overlay">
+                  <h3>Strength</h3>
+                  <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+                </div>
+              </div>
+              <div class="grid-item">
+                <img src="assets/img/gallery/s11.jpg" alt="Strength">
+                <div class="overlay">
+                  <h3>Strength</h3>
+                  <a href="gallery.html" aria-label="View gallery"><i class="ti-plus">+</i></a>
+                </div>
+              </div>
+    
+          </div>
         </div>
-    </div>
+      </div>
     <!-- Gallery Area End -->
     <!-- ? services-area -->
     <section class="services-area">
@@ -199,7 +274,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-40">
+                    <div class="single-services mb-3">
                         <div class="features-icon">
                             <img src="assets/img/icon/icon3.svg" alt="">
                         </div>
@@ -219,11 +294,11 @@
     <!--? Footer Start-->
     <div class="footer-area black-bg">
         <div class="container">
-            <div class="footer-top footer-padding">
+            <div class="">
                 <!-- Footer Menu -->
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="single-footer-caption mb-50 text-center">
+                        <div class="single-footer-caption mb-10 text-center">
                             <!-- logo -->
                             <div class="footer-logo wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                                 <a href="index.html"><img src="assets/img/logo/logooo_white_no_bg.png" style="height: 120px; width: 300px;" alt=""></a>
@@ -280,7 +355,19 @@
   <div id="back-top" >
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
 </div>
-
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script>
+    // Wait for all images to load, then initialize Masonry
+    var grid = document.querySelector('.grid');
+    imagesLoaded(grid, function () {
+      new Masonry(grid, {
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        gutter: 15
+      });
+    });
+  </script>
 <!-- JS here -->
 
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -321,6 +408,7 @@
 <!-- Jquery Plugins, main Jquery -->	
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
 </body>
 </html>
