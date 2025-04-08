@@ -4318,13 +4318,19 @@ hr {
 /* line 22, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_gallery.scss */
 .gallery-area .box .gallery-img {
   height: 565px;
-  background-size: cover;
+  background-size: contain;  /* instead of cover */
   background-repeat: no-repeat;
+  background-position: center;  /* center मधे image ठेवण्यासाठी */
 }
 
 /* line 27, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_gallery.scss */
 .gallery-area .box .big-img {
   height: 500px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
