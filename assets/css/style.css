@@ -3704,7 +3704,8 @@ hr {
 
 /* line 22, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_traning-cat.scss */
 .traning-categories .single-topic .topic-img img {
-  width: 100%;
+  height: 400px;
+  width: 50%;
 }
 
 /* line 29, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_traning-cat.scss */
