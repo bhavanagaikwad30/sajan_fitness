@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masonry Gallery with Modal</title>
+
+  <!-- ICONS -->
+  <link href="https://cdn.jsdelivr.net/npm/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+    }
+
+    .gallery-area {
+      padding: 50px 20px;
+    }
+
+    .grid {
+      margin-left: -15px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .grid-item {
+      width: 30%;
+      margin-bottom: 30px;
+      padding-left: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .grid-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay h3 {
+      color: #fff;
+      font-size: 24px;
+      margin: 0 0 10px;
+    }
+
+    .overlay span {
+      color: #fff;
+      font-size: 20px;
+      background: red;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @media (max-width: 991px) {
+      .grid-item {
+        width: 48%;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .grid-item {
+        width: 100%;
+      }
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .modal .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .modal .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .modal .prev-btn {
+      left: 30px;
+    }
+
+    .modal .next-btn {
+      right: 30px;
+    }
+
+    .modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 35px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-area">
+    <div class="container-fluid">
+      <div class="grid" id="galleryGrid">
+
+        <!-- Gallery Items -->
+        <div class="grid-item" data-img="assets/img/gallery/gallery1.png">
+          <img src="assets/img/gallery/gallery1.png" alt="Muscle Gaining">
+          <div class="overlay">
+            <h3>Muscle Gaining</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+        <div class="grid-item" data-img="assets/img/gallery/gallery2.png">
+          <img src="assets/img/gallery/gallery2.png" alt="Fat Loss">
+          <div class="overlay">
+            <h3>Fat Loss</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+        <div class="grid-item" data-img="assets/img/gallery/gallery3.png">
+          <img src="assets/img/gallery/gallery3.png" alt="Cardio">
+          <div class="overlay">
+            <h3>Cardio</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+        <div class="grid-item" data-img="assets/img/gallery/gallery4.png">
+          <img src="assets/img/gallery/gallery4.png" alt="Yoga">
+          <div class="overlay">
+            <h3>Yoga</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+        <div class="grid-item" data-img="assets/img/gallery/gallery5.png">
+          <img src="assets/img/gallery/gallery5.png" alt="Strength">
+          <div class="overlay">
+            <h3>Strength</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+        <div class="grid-item" data-img="assets/img/gallery/gallery6.png">
+          <img src="assets/img/gallery/gallery6.png" alt="Flexibility">
+          <div class="overlay">
+            <h3>Flexibility</h3>
+            <span class="open-modal"><i class="ti-plus"></i></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="imageModal">
+    <button class="close-btn" id="closeModal">&times;</button>
+    <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+    <img id="modalImage" src="" alt="Full View" />
+    <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+  </div>
+
+  <!-- Masonry & ImagesLoaded -->
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+  <script>
+    const grid = document.querySelector('.grid');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const items = document.querySelectorAll('.grid-item');
+
+    let currentIndex = 0;
+
+    imagesLoaded(grid, function () {
+      new Masonry(grid, {
+        itemSelector: '.grid-item',
+        gutter: 15,
+        percentPosition: true
+      });
+    });
+
+    document.querySelectorAll(".open-modal").forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest('.grid-item');
+        currentIndex = Array.from(items).indexOf(item);
+        openModal(currentIndex);
+      });
+    });
+
+    function openModal(index) {
+      const imgSrc = items[index].getAttribute('data-img');
+      modalImg.src = imgSrc;
+      modal.style.display = "flex";
+    }
+
+    function closeModalFunc() {
+      modal.style.display = "none";
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % items.length;
+      openModal(currentIndex);
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      openModal(currentIndex);
+    }
+
+    closeModal.addEventListener("click", closeModalFunc);
+    nextBtn.addEventListener("click", showNext);
+    prevBtn.addEventListener("click", showPrev);
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+  </script>
+
+</body>
+</html>
